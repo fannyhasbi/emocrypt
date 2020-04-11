@@ -1,0 +1,24 @@
+{
+  "name": "emocrypt",
+  "version": "1.0.0",
+  "description": "Emoji encryption",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fannyhasbi/emocrypt.git"
+  },
+  "keywords": [
+    "emoji",
+    "encryption",
+    "rabbit"
+  ],
+  "author": "Fanny Hasbi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fannyhasbi/emocrypt/issues"
+  },
+  "homepage": "https://github.com/fannyhasbi/emocrypt#readme"
+}

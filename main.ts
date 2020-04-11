@@ -1,3 +1,3 @@
-const hello = 'world';
-
-console.log(hello);
+function sayHello(name : string) : string {
+  return 'Hello, ' + name;
+}
