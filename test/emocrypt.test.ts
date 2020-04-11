@@ -4,15 +4,14 @@ import {
   emojis,
   encrypt,
   decrypt,
-  possibleEmojis,
+  pickEmoji,
 } from '../src/emocrypt';
 
 describe('Encryption prelogic', () => {
-  it('should return more than 0', () => {
-    assert.isAtLeast(possibleEmojis(10).length, 1);
-    assert.isAtLeast(possibleEmojis(20).length, 1);
-    assert.isAtLeast(possibleEmojis(30).length, 1);
-    assert.isAtLeast(possibleEmojis(40).length, 1);
+  it('should return the string of emoji', () => {
+    let result = pickEmoji(64);
+    assert.equal(typeof result, 'string');
+    assert.isAbove(result.length, 0);
   });
 });
 
@@ -25,7 +24,6 @@ describe('Initial crypto', () => {
 
   it('should successfully decrypt', () => {
     let message = decrypt('U2FsdGVkX18DV/Lyte8IsaxBpnKm', '123');
-    console.log(message.toString(enc.Utf8));
     assert.equal(typeof message, 'object');
   })
 });
