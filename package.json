@@ -4,7 +4,7 @@
   "description": "Emoji encryption",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit --require ts-node/register --colors test/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/fannyhasbi/emocrypt/issues"
   },
-  "homepage": "https://github.com/fannyhasbi/emocrypt#readme"
+  "homepage": "https://github.com/fannyhasbi/emocrypt#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  }
 }

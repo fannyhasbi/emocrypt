@@ -67,6 +67,6 @@
     "node_modules"
   ],
   "files": [
-    "main.ts"
+    "src/main.ts"
   ]
 }
