@@ -1,12 +1,6 @@
 import { assert } from 'chai';
 import { enc } from 'crypto-js';
-import { sayHello, encrypt, decrypt } from '../src/emocrypt';
-
-describe('Trial', () => {
-  it('should return hello name', () => {
-    assert.equal(sayHello('Hasbi'), 'Hello, Hasbi');
-  });
-});
+import { emojis, encrypt, decrypt } from '../src/emocrypt';
 
 describe('Initial crypto', () => {
   it('should return string', () => {
@@ -22,3 +16,9 @@ describe('Initial crypto', () => {
   })
 });
 
+describe('Emojis', () => {
+  it('is more than 1', () => {
+    console.log('emojis count :', emojis.length);
+    assert.isAbove(emojis.length, 1);
+  })
+})

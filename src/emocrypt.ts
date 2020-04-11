@@ -1,8 +1,6 @@
 import { Rabbit, DecryptedMessage } from 'crypto-js';
 
-function sayHello(name: string): string {
-  return 'Hello, ' + name;
-}
+const emojis: Array<string> = ['😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃', '😉', '😊', '😇', '😘', '😍', '😘', '😗', '☺', '😚', '😙', '😋', '😛', '😜', '🤪', '😝', '🤑', '🤗', '🤭', '🤫', '🤔', '🤐', '🤨', '😐', '😑', '😶', '😏', '😒', '🙄', '😬', '🤥', '😌', '😔', '😪', '🤤', '😴', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '🥵', '🥶', '🥴', '😵', '🤯', '🤠', '🥳', '😎', '🤓', '🧐', '😕', '😟', '🙁', '☹', '😮', '😯'];
 
 function encrypt(message: string, key: string): string {
   return Rabbit.encrypt(message, key).toString();
@@ -13,7 +11,7 @@ function decrypt(cipher: string, key: string) : DecryptedMessage {
 }
 
 export {
-  sayHello,
+  emojis,
   encrypt,
   decrypt,
 };
