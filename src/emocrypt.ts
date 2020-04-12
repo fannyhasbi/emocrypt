@@ -4,6 +4,11 @@ class EmoCrypt {
   private static readonly emojis: Array<string> = ['😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃', '😉', '😊', '😇', '😘', '😍', '😘', '😗', '☺', '😚', '😙', '😋', '😛', '😜', '🤪', '😝', '🤑', '🤗', '🤭', '🤫', '🤔', '🤐', '🤨', '😐', '😑', '😶', '😏', '😒', '🙄', '😬', '🤥', '😌', '😔', '😪', '🤤', '😴', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '🥵', '🥶', '🥴', '😵', '🤯', '🤠', '🥳', '😎', '🤓', '🧐', '😕', '😟', '🙁', '☹', '😮', '😯'];
   private static readonly emojisLength: number = EmoCrypt.emojis.length;
   private static readonly maxChars: number = 65; // base64 characters count
+  key: string;
+
+  constructor(secretKey: string) {
+    this.key = secretKey;
+  }
   
   possibleEmojis(index: number): Array<string> {
     let possibilities: Array<string> = [];
@@ -19,8 +24,8 @@ class EmoCrypt {
     return emos[rand];
   }
 
-  encrypt(message: string, key: string): string {
-    const encrypted = Rabbit.encrypt(message, key).toString();
+  encrypt(message: string): string {
+    const encrypted = Rabbit.encrypt(message, this.key).toString();
   
     let convertedEmoji: string = encrypted.replace(/a/g, this.pickEmoji(0));
     convertedEmoji = convertedEmoji.replace(/b/g, this.pickEmoji(1));
@@ -112,7 +117,7 @@ class EmoCrypt {
     return cipherChars.join('');
   }
   
-  decrypt(cipher: string, key: string) : DecryptedMessage {
+  decrypt(cipher: string) : DecryptedMessage {
     cipher = this.revealOriginEmojis(cipher);
 
     let extractedEmoji: string = cipher.replace(new RegExp(EmoCrypt.emojis[0], "g"), 'a');
@@ -184,11 +189,8 @@ class EmoCrypt {
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[63], "g"), '/');
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[64], "g"), '=');
   
-    return Rabbit.decrypt(extractedEmoji, key);
+    return Rabbit.decrypt(extractedEmoji, this.key);
   }
 }
 
-
-export {
-  EmoCrypt,
-};
+export default EmoCrypt;
