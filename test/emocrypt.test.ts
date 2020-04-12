@@ -47,11 +47,15 @@ describe('Decryption prelogic', () => {
 
 describe('Initial crypto', () => {
   it('should return string of emojis', () => {
-    assert.typeOf(encrypt('hello', '123'), 'string')
+    let cipher = encrypt('hello', '123');
+    assert.typeOf(cipher, 'string');
   });
 
   it('should successfully decrypt', () => {
-    let message = decrypt('U2FsdGVkX18DV/Lyte8IsaxBpnKm', '123');
-    assert.typeOf(message, 'object');
+    let dec = decrypt('🤒😵🤨😚😁😐🤕😉🤮🥴😟😍😋😙🤥🤣😊🙂😪🤣😑😒😇😚🥵😚😷🤐', '123');
+    let m = dec.toString(enc.Utf8);
+
+    assert.typeOf(dec, 'object');
+    assert.typeOf(m, 'string');
   });
 });

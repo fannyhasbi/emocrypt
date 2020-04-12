@@ -106,11 +106,82 @@ function revealOriginEmojis(cipher: string): string {
     cipherChars[i] = emojis[index];
   }
 
-  return cipherChars.join();
+  return cipherChars.join('');
 }
 
 function decrypt(cipher: string, key: string) : DecryptedMessage {
-  return Rabbit.decrypt(cipher, key);
+  cipher = revealOriginEmojis(cipher);
+
+  let extractedEmoji: string = cipher.replace(new RegExp(emojis[0], "g"), 'a');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[1], "g"), 'b');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[2], "g"), 'c');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[3], "g"), 'd');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[4], "g"), 'e');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[5], "g"), 'f');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[6], "g"), 'g');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[7], "g"), 'h');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[8], "g"), 'i');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[9], "g"), 'j');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[10], "g"), 'k');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[11], "g"), 'l');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[12], "g"), 'm');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[13], "g"), 'n');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[14], "g"), 'o');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[15], "g"), 'p');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[16], "g"), 'q');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[17], "g"), 'r');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[18], "g"), 's');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[19], "g"), 't');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[20], "g"), 'u');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[21], "g"), 'v');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[22], "g"), 'w');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[23], "g"), 'x');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[24], "g"), 'y');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[25], "g"), 'z');
+
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[26], "g"), 'A');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[27], "g"), 'B');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[28], "g"), 'C');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[29], "g"), 'D');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[30], "g"), 'E');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[31], "g"), 'F');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[32], "g"), 'G');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[33], "g"), 'H');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[34], "g"), 'I');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[35], "g"), 'J');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[36], "g"), 'K');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[37], "g"), 'L');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[38], "g"), 'M');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[39], "g"), 'N');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[40], "g"), 'O');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[41], "g"), 'P');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[42], "g"), 'Q');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[43], "g"), 'R');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[44], "g"), 'S');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[45], "g"), 'T');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[46], "g"), 'U');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[47], "g"), 'V');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[48], "g"), 'W');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[49], "g"), 'X');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[50], "g"), 'Y');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[51], "g"), 'Z');
+
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[52], "g"), '0');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[53], "g"), '1');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[54], "g"), '2');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[55], "g"), '3');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[56], "g"), '4');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[57], "g"), '5');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[58], "g"), '6');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[59], "g"), '7');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[60], "g"), '8');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[61], "g"), '9');
+
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[62], "g"), '+');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[63], "g"), '/');
+  extractedEmoji = extractedEmoji.replace(new RegExp(emojis[64], "g"), '=');
+
+  return Rabbit.decrypt(extractedEmoji, key);
 }
 
 export {
