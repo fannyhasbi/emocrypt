@@ -93,13 +93,31 @@ function encrypt(message: string, key: string): string {
   return convertedEmoji;
 }
 
+function revealOriginEmojis(cipher: string): string {
+  const cipherChars = [...cipher];
+  for(let i = 0; i < cipherChars.length; i++){
+    let index: number = emojis.indexOf(cipherChars[i]); // find the emoji from cipher
+    
+    if(index === -1){
+      continue;
+    }
+    index = index % maxChars; // reveal the origin emoji index
+    
+    cipherChars[i] = emojis[index];
+  }
+
+  return cipherChars.join();
+}
+
 function decrypt(cipher: string, key: string) : DecryptedMessage {
   return Rabbit.decrypt(cipher, key);
 }
 
 export {
   emojis,
+  maxChars,
   pickEmoji,
   encrypt,
+  revealOriginEmojis,
   decrypt,
 };
