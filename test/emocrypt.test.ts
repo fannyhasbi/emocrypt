@@ -2,15 +2,6 @@ import { assert } from 'chai';
 import { enc } from 'crypto-js';
 import EmoCrypt from '../src/emocrypt';
 
-describe('Encryption prelogic', () => {
-  it('should return the string of emoji', () => {
-    let emo = new EmoCrypt('123');
-    let result = emo.pickEmoji(64);
-    assert.typeOf(result, 'string');
-    assert.isAbove(result.length, 0);
-  });
-});
-
 describe('Initial crypto', () => {
   it('should return string of emojis', () => {
     let emo = new EmoCrypt('123');

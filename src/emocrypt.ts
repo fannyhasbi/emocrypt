@@ -10,7 +10,7 @@ class EmoCrypt {
     this.key = secretKey;
   }
   
-  possibleEmojis(index: number): Array<string> {
+  private possibleEmojis(index: number): Array<string> {
     let possibilities: Array<string> = [];
     for(let i = 0; i < EmoCrypt.emojisLength; i += EmoCrypt.maxChars+index) {
       possibilities.push(EmoCrypt.emojis[index]);
@@ -18,7 +18,7 @@ class EmoCrypt {
     return possibilities
   }
 
-  pickEmoji(index: number): string {
+  private pickEmoji(index: number): string {
     let emos: Array<string> = this.possibleEmojis(index);
     let rand: number = Math.floor(Math.random() * Math.floor(emos.length));
     return emos[rand];
@@ -99,7 +99,7 @@ class EmoCrypt {
     return convertedEmoji;
   }
 
-  revealOriginEmojis(cipher: string): string {
+  private revealOriginEmojis(cipher: string): string {
     const cipherChars = [...cipher];
     for(let i = 0; i < cipherChars.length; i++){
       // find the emoji from cipher
