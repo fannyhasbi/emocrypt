@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enc } from 'crypto-js';
 import {
+  EmoCrypt,
   emojis,
   maxChars,
   pickEmoji,
