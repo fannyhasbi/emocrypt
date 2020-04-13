@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { enc } from 'crypto-js';
-import EmoCrypt from '../src/emocrypt';
+import { EmoCrypt } from '../src/emocrypt';
 
 describe('Initial crypto', () => {
   it('should return string of emojis', () => {

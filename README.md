@@ -4,7 +4,7 @@ Emoji encryption with Rabbit cipher
 | Message | Secret | Result |
 |---|---|---|
 | emocrypt | hasbi | 🤒😵🤨😚😁😐🤕😉🤮🥴🙁🤐😎😙😑😛😃🥳🤠😶☺🤥😆😎😆😘🙂🤓😎😒😘🤫 |
-| ILOVEYOU | hasbi | 🤒😵🤨😚😁😐🤕😉🤮🥴😕🤨😘🤭🤢😚😆😁😘😀😆🤨😅🤑😌😎😋🤮😗😄😒😬 |
+| IGOTYOU | hasbi | 🤒😵🤨😚😁😐🤕😉🤮🥴😕🤨😘🤭🤢😚😆😁😘😀😆🤨😅🤑😌😎😋🤮😗😄😒😬 |
 
 Rabbit is a stream cipher, so when you provide the same message and secret it would generate different cipher message.
 

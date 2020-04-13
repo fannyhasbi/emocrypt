@@ -1,7 +1,5 @@
 import {
   Rabbit,
-  // eslint misperception
-  // eslint-disable-next-line no-unused-vars
   DecryptedMessage
 } from 'crypto-js';
 
@@ -198,4 +196,4 @@ class EmoCrypt {
   }
 }
 
-export default EmoCrypt;
+export { EmoCrypt };

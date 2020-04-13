@@ -4,7 +4,7 @@
   "description": "Emoji encryption",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && uglifyjs --compress --mangle --output build/emocrypt.min.js -- build/emocrypt.js",
+    "build": "tsc && browserify build/emocrypt.js --standalone EmoCrypt > build/bundle.js && uglifyjs --compress --mangle --output build/emocrypt.min.js -- build/bundle.js",
     "test": "mocha --exit --require ts-node/register --colors test/**/*.ts"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "@types/mocha": "^7.0.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
+    "browserify": "^16.5.1",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "mocha": "^7.1.1",
