@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@types/crypto-js": "^3.1.44",
-    "crypto-js": "^4.0.0"
+    "crypto-js": "^4.0.0",
+    "grapheme-splitter": "^1.0.4"
   }
 }

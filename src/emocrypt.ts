@@ -1,18 +1,19 @@
 import {
-  Rabbit,
+  AES,
   DecryptedMessage,
   enc,
 } from 'crypto-js';
+import GraphemeSplitter from 'grapheme-splitter';
 
 class EmoCrypt {
-  private static readonly emojis: Array<string> = ['😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃', '😉', '😊', '😇', '😘', '😍', '😘', '😗', '☺', '😚', '😙', '😋', '😛', '😜', '🤪', '😝', '🤑', '🤗', '🤭', '🤫', '🤔', '🤐', '🤨', '😐', '😑', '😶', '😏', '😒', '🙄', '😬', '🤥', '😌', '😔', '😪', '🤤', '😴', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '🥵', '🥶', '🥴', '😵', '🤯', '🤠', '🥳', '😎', '🤓', '🧐', '😕', '😟', '🙁', '☹', '😮', '😯'];
+  private static readonly emojis: Array<string> = ['😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃', '😉', '😊', '😇', '😘', '😍', '😘', '😗', '☺', '😚', '😙', '😋', '😛', '😜', '🤪', '😝', '🤑', '🤗', '🤭', '🤫', '🤔', '🤐', '🤨', '😐', '😑', '😶', '😏', '😒', '🙄', '😬', '🤥', '😌', '😔', '😪', '🤤', '😴', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '🥵', '🥶', '🥴', '😵', '🤯', '🤠', '🥳', '😎', '🤓', '🧐', '😕', '😟', '🙁', '☹', /**/ '😮', '😯'];
   private static readonly emojisLength: number = EmoCrypt.emojis.length;
   private static readonly maxChars: number = 65; // base64 characters count
   
   private possibleEmojis(index: number): Array<string> {
     let possibilities: Array<string> = [];
-    for(let i = 0; i < EmoCrypt.emojisLength; i += EmoCrypt.maxChars+index) {
-      possibilities.push(EmoCrypt.emojis[index]);
+    for(let i = index; i < EmoCrypt.emojisLength; i += EmoCrypt.maxChars) {
+      possibilities.push(EmoCrypt.emojis[i]);
     }
     return possibilities
   }
@@ -24,7 +25,7 @@ class EmoCrypt {
   }
 
   encrypt(message: string, key: string): string {
-    const encrypted = Rabbit.encrypt(message, key).toString();
+    const encrypted = AES.encrypt(message, key).toString();
   
     let convertedEmoji: string = encrypted.replace(/a/g, this.pickEmoji(0));
     convertedEmoji = convertedEmoji.replace(/b/g, this.pickEmoji(1));
@@ -94,12 +95,23 @@ class EmoCrypt {
     convertedEmoji = convertedEmoji.replace(/\+/g, this.pickEmoji(62));
     convertedEmoji = convertedEmoji.replace(/\//g, this.pickEmoji(63));
     convertedEmoji = convertedEmoji.replace(/=/g, this.pickEmoji(64));
+
+    // error trial, could be wrong at replacing the regex
+    if(this.decrypt(convertedEmoji, key) == '' || this.decrypt(convertedEmoji, key) != message){
+      return this.encrypt(message, key);
+    }
   
     return convertedEmoji;
   }
 
+  private emojiStringToArray(cipher: string): string[] {
+    const splitter = new GraphemeSplitter();
+    return splitter.splitGraphemes(cipher);
+  }
+
   private revealOriginEmojis(cipher: string): string {
-    const cipherChars = [...cipher];
+    const emojiArr = this.emojiStringToArray(cipher);
+    const cipherChars = [...emojiArr];
     for(let i = 0; i < cipherChars.length; i++){
       // find the emoji from cipher
       let index: number = EmoCrypt.emojis.indexOf(cipherChars[i]);
@@ -188,7 +200,7 @@ class EmoCrypt {
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[63], "g"), '/');
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[64], "g"), '=');
   
-    let decryptedBytes: DecryptedMessage = Rabbit.decrypt(extractedEmoji, key);
+    let decryptedBytes: DecryptedMessage = AES.decrypt(extractedEmoji, key);
     let message: string;
 
     try {

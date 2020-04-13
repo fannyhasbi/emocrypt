@@ -51,3 +51,31 @@ describe('Decryption process', () => {
     assert.equal(mes.length, 0);
   });
 });
+
+describe('bacforward', () => {
+  it('should the same', () => {
+    let emo = new EmoCrypt();
+    const message: string = 'Hello world';
+    const key: string = 'yoyoy';
+
+    let cip: string = emo.encrypt(message, key);
+    let mes: string = emo.decrypt(cip, key);
+
+    assert.equal(mes, message);
+  });
+
+  it('is long message, should be correct', () => {
+    let emo = new EmoCrypt();
+    const message: string = 'Clipboard.js is a handy JavaScript library that has make adding the copy utility to web pages much less complicated. In this tutorial, we looked into the basics, then some advanced stuff with the exposed APIs and the custom events.';
+    const key: string = 'helloworld';
+    
+    let cip: string = emo.encrypt(message, key);
+    let mes: string = emo.decrypt(cip, key);
+
+    assert.typeOf(cip, 'string');
+    assert.isAbove(cip.length, 0);
+    assert.typeOf(mes, 'string');
+    assert.isAbove(mes.length, 0);
+    assert.equal(mes, message);
+  });
+});
