@@ -4,8 +4,9 @@
   "description": "Emoji encryption",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && browserify build/emocrypt.js --standalone EmoCrypt > build/bundle.js && uglifyjs --compress --mangle --output build/emocrypt.min.js -- build/bundle.js",
-    "test": "mocha --exit --require ts-node/register --colors test/**/*.ts"
+    "build": "npm run test && tsc && npm run bundle",
+    "test": "mocha --exit --require ts-node/register --colors test/**/*.ts",
+    "bundle": "browserify build/emocrypt.js --standalone EmoCrypt > build/bundle.js && uglifyjs --compress --mangle --output build/emocrypt.min.js -- build/bundle.js"
   },
   "repository": {
     "type": "git",
