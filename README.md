@@ -9,7 +9,7 @@ Emoji encryption with Rabbit cipher
 Rabbit is a stream cipher, so when you provide the same message and secret it would generate different cipher message.
 
 ## Demo
-https://fannyhasbi.id/emocrypt
+https://fannyhasbi.github.io/emocrypt
 
 ## Installation
 1. Clone / download this project
