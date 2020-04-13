@@ -1,6 +1,7 @@
 import {
   Rabbit,
-  DecryptedMessage
+  DecryptedMessage,
+  enc,
 } from 'crypto-js';
 
 class EmoCrypt {
@@ -120,7 +121,7 @@ class EmoCrypt {
     return cipherChars.join('');
   }
   
-  decrypt(cipher: string) : DecryptedMessage {
+  decrypt(cipher: string) : string {
     cipher = this.revealOriginEmojis(cipher);
 
     let extractedEmoji: string = cipher.replace(new RegExp(EmoCrypt.emojis[0], "g"), 'a');
@@ -192,7 +193,15 @@ class EmoCrypt {
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[63], "g"), '/');
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[64], "g"), '=');
   
-    return Rabbit.decrypt(extractedEmoji, this.key);
+    let decryptedBytes: DecryptedMessage = Rabbit.decrypt(extractedEmoji, this.key);
+    let message: string;
+
+    try {
+      message = decryptedBytes.toString(enc.Utf8);
+    } catch (e) {
+      message = "";
+    }
+    return message;
   }
 }
 
