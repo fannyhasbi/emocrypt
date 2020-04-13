@@ -1,5 +1,5 @@
 import {
-  AES,
+  Rabbit,
   DecryptedMessage,
   enc,
 } from 'crypto-js';
@@ -25,7 +25,7 @@ class EmoCrypt {
   }
 
   encrypt(message: string, key: string): string {
-    const encrypted = AES.encrypt(message, key).toString();
+    const encrypted = Rabbit.encrypt(message, key).toString();
   
     let convertedEmoji: string = encrypted.replace(/a/g, this.pickEmoji(0));
     convertedEmoji = convertedEmoji.replace(/b/g, this.pickEmoji(1));
@@ -200,7 +200,7 @@ class EmoCrypt {
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[63], "g"), '/');
     extractedEmoji = extractedEmoji.replace(new RegExp(EmoCrypt.emojis[64], "g"), '=');
   
-    let decryptedBytes: DecryptedMessage = AES.decrypt(extractedEmoji, key);
+    let decryptedBytes: DecryptedMessage = Rabbit.decrypt(extractedEmoji, key);
     let message: string;
 
     try {

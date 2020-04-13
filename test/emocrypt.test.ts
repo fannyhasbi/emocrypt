@@ -52,7 +52,7 @@ describe('Decryption process', () => {
   });
 });
 
-describe('bacforward', () => {
+describe('Bacforward', () => {
   it('should the same', () => {
     let emo = new EmoCrypt();
     const message: string = 'Hello world';
@@ -66,7 +66,7 @@ describe('bacforward', () => {
 
   it('is long message, should be correct', () => {
     let emo = new EmoCrypt();
-    const message: string = 'Clipboard.js is a handy JavaScript library that has make adding the copy utility to web pages much less complicated. In this tutorial, we looked into the basics, then some advanced stuff with the exposed APIs and the custom events.';
+    const message: string = 'Clipboard.js is a handy JavaScript library that has make adding the copy utility to web pages much less complicated.';
     const key: string = 'helloworld';
     
     let cip: string = emo.encrypt(message, key);
