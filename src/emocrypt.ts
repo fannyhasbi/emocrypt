@@ -97,7 +97,8 @@ class EmoCrypt {
     convertedEmoji = convertedEmoji.replace(/=/g, this.pickEmoji(64));
 
     // error trial, could be wrong at replacing the regex
-    if(this.decrypt(convertedEmoji, key) == '' || this.decrypt(convertedEmoji, key) != message){
+    const decryptionTrial: string = this.decrypt(convertedEmoji, key);
+    if(decryptionTrial == '' || decryptionTrial != message){
       return this.encrypt(message, key);
     }
   
